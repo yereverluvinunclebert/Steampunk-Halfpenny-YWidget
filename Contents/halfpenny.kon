@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget minimumVersion="4.5">
+<!--
+	 halfpenny
+	 Written by: Dean Beedell
+
+-->
+	<about-box>
+		<image>Resources/About.png</image>
+		<about-text font="Times New Roman" color="#000000" style="Bold" size="10" hOffset="120" vOffset="210"
+					data="Version"/>
+		<about-version font="Times New Roman" color="#000000" style="Bold"  size="10" hOffset="155" vOffset="210"/>
+	</about-box>
+
+
+
+	<window visible="true" name="mainWindow" width="174" title="halfpenny" height="192" shadow="false">
+		<image visible="true" vOffset="1" name="image" src="Resources/halfpenny.png" hOffset="0">
+			<onMultiClick>
+				<![CDATA[
+				if (system.event.clickCount === 2) {
+					//doubleClick();
+				}
+				taskcommand = preferences.imageCmdPref.value;
+				performCommand("click");
+				]]>
+			</onMultiClick>
+			<tooltip>Double click on me...</tooltip>
+		</image>
+
+
+	</window>
+
+	<preferenceGroup name="general" order="1" icon="Resources/images/general-icon.png" title="General"/>
+	<preferenceGroup name="commands" order="2" icon="Resources/images/commands-icon.png" title="Commands"/>
+	<preferenceGroup name="configuration" order="3" icon="Resources/images/config-icon.png" title="Configuration"/>
+	<preferenceGroup name="timepieceposition" order="4" icon="Resources/images/earth.png" title="Position"/>
+
+   <prefGroup name="development" order="8" icon="Resources/images/development-icon.png" title="Development"/>
+   <preference hidden="false" description="Turning on the debugging will provide extra information in the debug window. To obtain the debug window press SHIFT+CTRL simultaneously whilst right clicking on the Yahoo widget systray icon, then select debug from the drop down menu. You will need to restart the widget properly rather than doing a simple restart for debugging information to appear." name="debugflgPref" group="development" title="Debug:" defaultValue="1" type="popup">
+        <option>Debug OFF</option>
+        <optionValue>0</optionValue>
+        <option>Debug ON</option>
+        <optionValue>1</optionValue>
+    </preference>
+   <preference hidden="false" description="Default command to run when the gauge receives a double-click. %SystemRoot%/system32/perfmon.exe" name="imageCmdPref" group="development" title="Double-Click command" defaultValue="%SystemRoot%/system32/perfmon.exe" type="text"/>
+   <preference hidden="false" description="Development ONLY: Enter your editor path here along with any command line switches required to open this widget in the editor. This function only operates if the widget has been unpacked and DEBUG is ON. " name="imageEditPref" group="development" title="Default Editor:" defaultValue="" type="text"/>
+
+
+        <preference hidden="false" description="Check this box if you don't want to see the Licence Conditions again." name="licenceHide" title="Don't Show Licence Again" defaultValue="0" type="checkbox"/>
+	<preference name="soundpref">
+		<title>Sound Control:</title>
+		<type>popup</type>
+		<option>enable</option>
+		<optionValue>enable</optionValue>
+		<option>disable</option>
+		<optionValue>disable</optionValue>
+		<description>Enable or disable sound as you require.</description>
+		<group>settings</group>
+	</preference>
+
+
+        <preference hidden="true" description="" name="pinhOffsetPref" title="String:" defaultValue="" type="text"/>
+	<preference hidden="true" description="" name="pinvOffsetPref" title="String:" defaultValue="" type="text"/>
+
+	<preference hidden="true" description="" name="widgetLockPref" title="Widget Locked:" defaultValue="0" type="popup">
+		<option>1</option><optionValue>1</optionValue>
+		<option>0</option><optionValue>0</optionValue>
+	</preference>
+
+
+	<preference group="configuration" ticks="41" minLength="20" description="Adjust to a percentage of the original size. You can also use Ctrl+Mousewheel."
+		name="clockSize" maxLength="220" title="Clock Size:" defaultValue="100" type="slider">
+		<tickLabel>020</tickLabel>
+		<tickLabel>060</tickLabel>
+		<tickLabel>100</tickLabel>
+		<tickLabel>140</tickLabel>
+		<tickLabel>180</tickLabel>
+		<tickLabel>220</tickLabel>
+	</preference>
+
+	<preference hidden="false" description="Double-clicking on the widget image will run this command. An example command for windows might be : C:\Program Files\Mozilla Thunderbird\thunderbird.exe" name="imageCmdPref" group="settings" title="Widget Command:" type="text"/>
+
+	<preference hidden="false" description="You can change the name of the widget at any time to correspond to the name of the function you have assigned to it." name="widgetTooltip" group="settings" title="Widget Tooltip:" type="text"/>
+
+	<preference hidden="false" group="configuration" description="The scroll-wheel resizing direction can be determined here." name="MouseWheelPref" title="Mouse Scroll Wheel" defaultValue="up" type="popup">
+		<option>up</option>
+		<option>down</option>
+	</preference>
+
+
+	<preference name="widgetHideModePref">
+		<title>Aspect Ratio Hidden Mode</title>
+		<type>popup</type>
+		<option>landscape</option>
+		<option>portrait</option>
+		<option>none</option>
+		<defaultValue>none</defaultValue>
+		<hidden>false</hidden>
+		<group>timepieceposition</group>
+		<description>Tablets only. Don't fiddle with this unless you know what you are doing. Here you can choose whether the widget is hidden by default in either landscape or portrait mode or not at all. This allows you to have certain widgets that do not obscure the screen in one mode or another. If you accidentally set it so you can't find it on screen - then simply choose 'show widget' on the widget dock and then change the setting here to none.</description>
+	</preference>
+
+	<preference hidden="false" group="timepieceposition" name="widgetLockPercentagePref"  description="Tablets only. The widget can be positioned proportionally when switching between portrait/landscape. If you want to enable this, disable the options below." title="Widget Position by Percentage:" defaultValue="disabled" type="popup">
+		<option>enabled</option><optionValue>enabled</optionValue>
+		<option>disabled</option><optionValue>disabled</optionValue>
+	</preference>
+
+	<preference name="hLocationPercPref">
+		<title>Widget horizontal location</title>
+		<type>text</type>
+		<hidden>true</hidden>
+		<description>The widget's horizontal location stored in %.</description>
+	</preference>
+
+	<preference name="vLocationPercPref">
+		<title>Widget vertical location</title>
+		<type>text</type>
+		<hidden>true</hidden>
+		<description>The widget's vertical location stored in %.</description>
+	</preference>
+
+	<preference hidden="false" group="timepieceposition" name="widgetLockLandscapeModePref" title="Widget Locked in Landscape:" defaultValue="disabled" type="popup">
+		<option>enabled</option><optionValue>enabled</optionValue>
+		<option>disabled</option><optionValue>disabled</optionValue>
+	</preference>
+
+	<preference hidden="false" group="timepieceposition" name="widgetLockPortraitModePref"	description="The widget can be locked into a certain position when in landscape/portrait mode, it ensures that the widget always appears where you want it to. Using the fields below, you can assign a default x/y position for both Landscape or Portrait mode. When the widget is locked in place using the locking pin, this value is set automatically." title="Widget Locked in Portrait:" defaultValue="disabled" type="popup">
+		<option>enabled</option><optionValue>enabled</optionValue>
+		<option>disabled</option><optionValue>disabled</optionValue>
+	</preference>
+
+	<preference hidden="false" group="timepieceposition"  name="landscapeHoffsetPref" title="Landscape Hoffset/Left X pos" type="text"/>
+
+	<preference hidden="false" group="timepieceposition"  name="landscapeVoffsetPref" title="Landscape Yoffset/top Y pos" type="text"/>
+
+	<preference hidden="false" group="timepieceposition"  name="portraitHoffsetPref" title="Portrait Hoffset/Left X pos" type="text"/>
+
+	<preference hidden="false" group="timepieceposition" description="" name="portraitVoffsetPref" title="Portrait Yoffset/top Y pos" type="text"/>
+
+	<preference name="hLocationPref">
+		<title>Widget horizontal location</title>
+		<type>text</type>
+		<hidden>true</hidden>
+		<description>The widget's horizontal location stored in pixels.</description>
+	</preference>
+
+	<preference name="vLocationPref">
+		<title>Widget vertical location</title>
+		<type>text</type>
+		<hidden>true</hidden>
+		<description>The widget's vertical location stored in pixels.</description>
+	</preference>
+
+        <action trigger="onKeyDown">
+              <![CDATA[
+                if (system.event.keyCode==116) {
+                    print("pressing "+system.event.keyCode);
+                    reloadWidget();
+                }
+               ]]>
+        </action>
+
+        <action trigger="onload">	<![CDATA[
+                include("vitality.js");
+                include("halfpenny.js");
+		include("functions.js");
+		include("Resources/licence/licence.js");
+		startup();
+	// ]]> </action>
+
+	<action trigger="onPreferencesChanged">
+                changePrefs();
+        </action>
+
+
+
+</widget>
